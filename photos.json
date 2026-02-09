@@ -1,0 +1,85 @@
+{
+  "photos": [
+    {
+      "id": 1,
+      "filename": "photo1.jpg",
+      "place": "Paris, France",
+      "date": "June 2024",
+      "column": 1,
+      "gradient": "linear-gradient(135deg, #B02E0C 0%, #7F00FF 100%)",
+      "height": "600px"
+    },
+    {
+      "id": 2,
+      "filename": "photo2.jpg",
+      "place": "Rome, Italy",
+      "date": "August 2024",
+      "column": 1,
+      "gradient": "linear-gradient(45deg, #7F00FF 0%, #B02E0C 100%)",
+      "height": "550px"
+    },
+    {
+      "id": 3,
+      "filename": "photo3.jpg",
+      "place": "Barcelona, Spain",
+      "date": "September 2024",
+      "column": 1,
+      "gradient": "linear-gradient(225deg, #B02E0C 0%, #7F00FF 100%)",
+      "height": "580px"
+    },
+    {
+      "id": 4,
+      "filename": "photo4.jpg",
+      "place": "London, UK",
+      "date": "July 2024",
+      "column": 2,
+      "gradient": "linear-gradient(90deg, #7F00FF 0%, #B02E0C 100%)",
+      "height": "620px"
+    },
+    {
+      "id": 5,
+      "filename": "photo5.jpg",
+      "place": "Amsterdam, Netherlands",
+      "date": "October 2024",
+      "column": 2,
+      "gradient": "linear-gradient(180deg, #B02E0C 0%, #7F00FF 100%)",
+      "height": "570px"
+    },
+    {
+      "id": 6,
+      "filename": "photo6.jpg",
+      "place": "Prague, Czech Republic",
+      "date": "November 2024",
+      "column": 2,
+      "gradient": "linear-gradient(315deg, #7F00FF 0%, #B02E0C 100%)",
+      "height": "590px"
+    },
+    {
+      "id": 7,
+      "filename": "photo7.jpg",
+      "place": "Vienna, Austria",
+      "date": "December 2024",
+      "column": 3,
+      "gradient": "linear-gradient(270deg, #B02E0C 0%, #7F00FF 100%)",
+      "height": "610px"
+    },
+    {
+      "id": 8,
+      "filename": "photo8.jpg",
+      "place": "Berlin, Germany",
+      "date": "January 2025",
+      "column": 3,
+      "gradient": "linear-gradient(60deg, #7F00FF 0%, #B02E0C 100%)",
+      "height": "560px"
+    },
+    {
+      "id": 9,
+      "filename": "photo9.jpg",
+      "place": "Copenhagen, Denmark",
+      "date": "February 2025",
+      "column": 3,
+      "gradient": "linear-gradient(120deg, #B02E0C 0%, #7F00FF 100%)",
+      "height": "600px"
+    }
+  ]
+}
