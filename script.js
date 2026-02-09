@@ -7,13 +7,50 @@ document.addEventListener('DOMContentLoaded', function() {
     createFloatingViolets();
 });
 
-// Load gallery from photos.json
+// Load gallery from inline data (fetch doesn't work with file:// protocol)
 async function loadGallery() {
     try {
-        const response = await fetch('photos.json');
-        const data = await response.json();
+        const data = {
+            "photos": [
+                { "filename": "0f6c2cb95fb290f3ef73fe859ca55223.JPEG", "place": "Paris, France", "date": "June 2024" },
+                { "filename": "91c6daa534383cecf685120fe75846fd.JPEG", "place": "Paris, France", "date": "June 2024" },
+                { "filename": "E87B1F0B-ADDF-43B3-B80A-BFDA17B5B505.JPG", "place": "Rome, Italy", "date": "August 2024" },
+                { "filename": "IMG_1143.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_1517.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_1534.jpg", "place": "London, UK", "date": "July 2024" },
+                { "filename": "IMG_1547.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_1573.jpg", "place": "Amsterdam, Netherlands", "date": "October 2024" },
+                { "filename": "IMG_1642.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_1680.jpg", "place": "Prague, Czech Republic", "date": "November 2024" },
+                { "filename": "IMG_1747.jpg", "place": "Vienna, Austria", "date": "December 2024" },
+                { "filename": "IMG_1790.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_1796.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_1857.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2027.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2114.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_2134.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_2138.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2154.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2164.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_2170.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2177.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2190.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2196.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_2225.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_2231.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_2240.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_2285.jpg", "place": "Barcelona, Spain", "date": "September 2024" },
+                { "filename": "IMG_2377.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_8233.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_8408.jpg", "place": "Berlin, Germany", "date": "January 2025" },
+                { "filename": "IMG_8473.jpeg", "place": "Barcelona, Spain", "date": "September 2024" },
+            ]
+        };
         const gallery = document.getElementById('gallery');
         
+        // Shuffle photos randomly
+        const photos = data.photos.sort(() => Math.random() - 0.5);
+
         // Create columns
         const columns = {
             1: document.createElement('div'),
@@ -25,10 +62,11 @@ async function loadGallery() {
         columns[2].className = 'column column-2';
         columns[3].className = 'column column-3';
         
-        // Add photos to appropriate columns
-        data.photos.forEach(photo => {
+        // Distribute photos across columns (round-robin)
+        photos.forEach((photo, index) => {
+            const col = (index % 3) + 1;
             const photoCard = createPhotoCard(photo);
-            columns[photo.column].appendChild(photoCard);
+            columns[col].appendChild(photoCard);
         });
         
         // Add columns to gallery
@@ -48,33 +86,9 @@ function createPhotoCard(photo) {
     card.setAttribute('data-place', photo.place);
     card.setAttribute('data-date', photo.date);
     
-    // Check if photo file exists, otherwise use gradient placeholder
-    const photoPath = `photos/${photo.filename}`;
-    
-    // Create image element that will try to load the photo
-    // If it fails, it will show the gradient placeholder
     const img = document.createElement('img');
-    img.src = photoPath;
+    img.src = `photos/${photo.filename}`;
     img.alt = `${photo.place} - ${photo.date}`;
-    img.style.display = 'none'; // Hide until loaded
-    
-    // Create placeholder with gradient
-    const placeholder = document.createElement('div');
-    placeholder.className = 'placeholder-img';
-    placeholder.style.background = photo.gradient;
-    placeholder.style.height = photo.height;
-    
-    // If image loads successfully, show it instead of placeholder
-    img.onload = function() {
-        img.style.display = 'block';
-        placeholder.style.display = 'none';
-    };
-    
-    // If image fails to load, keep showing placeholder
-    img.onerror = function() {
-        img.style.display = 'none';
-        placeholder.style.display = 'block';
-    };
     
     // Create photo info overlay
     const photoInfo = document.createElement('div');
@@ -91,9 +105,7 @@ function createPhotoCard(photo) {
     photoInfo.appendChild(placeSpan);
     photoInfo.appendChild(dateSpan);
     
-    // Append elements to card
     card.appendChild(img);
-    card.appendChild(placeholder);
     card.appendChild(photoInfo);
     
     return card;
@@ -133,13 +145,13 @@ function createFloatingViolets() {
         const duration = 10 + Math.random() * 15;
         violet.style.animationDuration = duration + 's';
         
-        // Random delay for staggered effect
-        const delay = Math.random() * 10;
+        // Negative delay so they start mid-animation (already floating)
+        const delay = -(Math.random() * duration);
         violet.style.animationDelay = delay + 's';
         
-        // Slightly random size
+        // Slightly random size using CSS scale (won't override animation transform)
         const scale = 0.8 + Math.random() * 0.6;
-        violet.style.transform = `scale(${scale})`;
+        violet.style.setProperty('--scale', scale);
         
         violetsContainer.appendChild(violet);
     }
