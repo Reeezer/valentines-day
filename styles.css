@@ -82,12 +82,85 @@ header {
     flex: 1;
 }
 
+/* Countdown Section */
+.countdown-section {
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.countdown-container h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--color-purple-light);
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(127, 0, 255, 0.1);
+    padding: 25px 30px;
+    border-radius: var(--radius);
+    border: 2px solid rgba(127, 0, 255, 0.3);
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-purple);
+    box-shadow: 0 10px 30px rgba(127, 0, 255, 0.3);
+}
+
+.countdown-number {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: var(--color-purple-light);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    color: var(--color-offwhite);
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 40px 20px;
+    position: relative;
+    z-index: 5;
+}
+
+.gallery-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--color-purple-light);
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: normal;
+}
+
 /* Gallery Container */
 .gallery {
     display: flex;
     justify-content: center;
     gap: var(--gallery-gap);
-    padding: 40px 20px;
+    padding: 0;
     max-width: 1400px;
     margin: 0 auto;
     position: relative;
@@ -218,6 +291,26 @@ header {
     }
 }
 
+/* Floating Hearts (Click Animation) */
+.floating-heart {
+    position: absolute;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatHeart 2s ease-out forwards;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.5);
+        opacity: 0;
+    }
+}
+
 /* Footer Styles */
 footer {
     text-align: center;
@@ -245,6 +338,10 @@ footer {
 
     .header-left span {
         font-size: 1.1rem;
+    }
+
+    .countdown-number {
+        font-size: 2.5rem;
     }
 }
 
@@ -278,6 +375,19 @@ footer {
     .header-center h1 {
         font-size: 1.8rem;
     }
+
+    .countdown {
+        gap: 20px;
+    }
+
+    .countdown-item {
+        padding: 20px 25px;
+        min-width: 80px;
+    }
+
+    .countdown-number {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 600px) {
@@ -291,5 +401,23 @@ footer {
 
     :root {
         --gallery-gap: 20px;
+    }
+
+    .countdown-section h2,
+    .gallery-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .countdown-item {
+        padding: 15px 20px;
+        min-width: 70px;
+    }
+
+    .countdown-number {
+        font-size: 1.8rem;
+    }
+
+    .countdown-label {
+        font-size: 0.75rem;
     }
 }
