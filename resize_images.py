@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-# HD resolution (1920x1080)
+# HD resolution (max 1920x1920)
 MAX_WIDTH = 1920
 MAX_HEIGHT = 1920
 
@@ -15,7 +15,8 @@ def resize_image_to_hd(image_path):
         image_path: Path to the image file
         
     Returns:
-        True if image was resized, False if it was already small enough
+        Tuple of (was_resized, new_size) where was_resized is a boolean and 
+        new_size is a tuple of (width, height), or (False, None) if not resized
     """
     try:
         img = Image.open(image_path)
@@ -23,7 +24,7 @@ def resize_image_to_hd(image_path):
         
         # Check if image needs resizing
         if original_width <= MAX_WIDTH and original_height <= MAX_HEIGHT:
-            return False
+            return False, None
         
         # Calculate new dimensions while maintaining aspect ratio
         ratio = min(MAX_WIDTH / original_width, MAX_HEIGHT / original_height)
@@ -43,10 +44,10 @@ def resize_image_to_hd(image_path):
         img.close()
         resized_img.close()
         
-        return True
+        return True, (new_width, new_height)
     except Exception as e:
         print(f"Error processing {image_path}: {e}")
-        return False
+        return False, None
 
 def resize_all_images():
     """Resize all images in the photos directory to HD resolution."""
@@ -79,14 +80,9 @@ def resize_all_images():
                 continue
             
             # Resize the image
-            was_resized = resize_image_to_hd(image_path)
+            was_resized, new_size = resize_image_to_hd(image_path)
             
             if was_resized:
-                # Get new size
-                img = Image.open(image_path)
-                new_size = img.size
-                img.close()
-                
                 print(f"✓ Resized:  {filename}")
                 print(f"            {original_size[0]}x{original_size[1]} -> {new_size[0]}x{new_size[1]}")
                 resized_count += 1
