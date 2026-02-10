@@ -177,7 +177,7 @@ function createFloatingViolets() {
 
 // Countdown to Valentine's Day 2026
 function startCountdown() {
-    const valentinesDay = new Date('February 14, 2026 00:00:00').getTime();
+    const valentinesDay = new Date('February 14, 2026 23:59:59').getTime();
     
     function updateCountdown() {
         const now = new Date().getTime();
