@@ -15,6 +15,13 @@ A romantic Valentine's Day website featuring a dynamic photo gallery with floati
 ### 1. Add Your Photos
 Place your couple photos in the `photos/` folder. Supported formats: `.jpg`, `.jpeg`, `.png`, `.gif`
 
+**Optional: Resize Images to HD**
+If your photos are very large, you can reduce their file size by running:
+```bash
+python3 resize_images.py
+```
+This will resize images to HD resolution (max 1920x1920 pixels) while maintaining aspect ratio. Images are saved with quality 80, which provides excellent visual quality for web viewing while optimizing file size.
+
 ### 2. Update the JSON Configuration
 Edit `photos.json` to add or modify photo metadata:
 
