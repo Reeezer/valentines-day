@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create floating violets
     createFloatingViolets();
+    
+    // Start countdown timer
+    startCountdown();
+    
+    // Add interactive heart animations
+    addHeartAnimations();
 });
 
 // Load gallery from inline data (fetch doesn't work with file:// protocol)
@@ -167,4 +173,56 @@ function createFloatingViolets() {
             createViolet();
         }
     }, 2000);
+}
+
+// Countdown to Valentine's Day 2026
+function startCountdown() {
+    const valentinesDay = new Date('February 14, 2026 00:00:00').getTime();
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = valentinesDay - now;
+        
+        if (distance < 0) {
+            // If Valentine's Day has passed, show a special message
+            document.getElementById('days').textContent = '0';
+            document.getElementById('hours').textContent = '0';
+            document.getElementById('minutes').textContent = '0';
+            document.getElementById('seconds').textContent = '0';
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').textContent = days;
+        document.getElementById('hours').textContent = hours;
+        document.getElementById('minutes').textContent = minutes;
+        document.getElementById('seconds').textContent = seconds;
+    }
+    
+    // Update immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
+
+// Add interactive heart animations on click
+function addHeartAnimations() {
+    document.body.addEventListener('click', function(e) {
+        // Create a floating heart at click position
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.textContent = '💜';
+        heart.style.left = e.pageX + 'px';
+        heart.style.top = e.pageY + 'px';
+        
+        document.body.appendChild(heart);
+        
+        // Remove heart after animation
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
+    });
 }
