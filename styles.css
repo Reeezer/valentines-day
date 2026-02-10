@@ -139,102 +139,6 @@ header {
     letter-spacing: 1px;
 }
 
-/* Love Letter Section */
-.love-letter-section {
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 5;
-}
-
-.love-letter {
-    max-width: 700px;
-    background: linear-gradient(135deg, rgba(127, 0, 255, 0.15) 0%, rgba(176, 46, 12, 0.15) 100%);
-    padding: 50px 40px;
-    border-radius: var(--radius);
-    border: 2px solid rgba(127, 0, 255, 0.3);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-.love-letter h2 {
-    font-family: 'Pacifico', cursive;
-    font-size: 2.5rem;
-    color: var(--color-purple-light);
-    margin-bottom: 30px;
-    font-weight: normal;
-}
-
-.love-letter p {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--color-offwhite);
-    margin-bottom: 20px;
-}
-
-.love-letter .signature {
-    font-family: 'Pacifico', cursive;
-    font-size: 1.5rem;
-    color: var(--color-purple-light);
-    text-align: right;
-    margin-top: 30px;
-    margin-bottom: 0;
-}
-
-/* Reasons Section */
-.reasons-section {
-    padding: 60px 20px;
-    position: relative;
-    z-index: 5;
-    text-align: center;
-}
-
-.reasons-section h2 {
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
-    color: var(--color-purple-light);
-    margin-bottom: 40px;
-    font-weight: normal;
-}
-
-.reasons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.reason-card {
-    background: rgba(127, 0, 255, 0.1);
-    padding: 30px 25px;
-    border-radius: var(--radius);
-    border: 2px solid rgba(127, 0, 255, 0.2);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.reason-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--color-purple);
-    box-shadow: 0 15px 40px rgba(127, 0, 255, 0.3);
-    background: rgba(127, 0, 255, 0.15);
-}
-
-.reason-emoji {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-
-.reason-card p {
-    font-family: var(--font-ui);
-    font-size: 1rem;
-    color: var(--color-offwhite);
-    line-height: 1.6;
-    margin: 0;
-}
-
 /* Gallery Section */
 .gallery-section {
     padding: 40px 20px;
@@ -439,10 +343,6 @@ footer {
     .countdown-number {
         font-size: 2.5rem;
     }
-
-    .love-letter {
-        padding: 40px 30px;
-    }
 }
 
 @media (max-width: 900px) {
@@ -488,18 +388,6 @@ footer {
     .countdown-number {
         font-size: 2rem;
     }
-
-    .love-letter h2 {
-        font-size: 2rem;
-    }
-
-    .love-letter p {
-        font-size: 1rem;
-    }
-
-    .reasons-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
 }
 
 @media (max-width: 600px) {
@@ -516,7 +404,6 @@ footer {
     }
 
     .countdown-section h2,
-    .reasons-section h2,
     .gallery-section h2 {
         font-size: 1.8rem;
     }
@@ -532,25 +419,5 @@ footer {
 
     .countdown-label {
         font-size: 0.75rem;
-    }
-
-    .love-letter {
-        padding: 30px 20px;
-    }
-
-    .love-letter h2 {
-        font-size: 1.8rem;
-    }
-
-    .love-letter .signature {
-        font-size: 1.3rem;
-    }
-
-    .reasons-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .reason-card {
-        padding: 25px 20px;
     }
 }
