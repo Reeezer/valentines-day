@@ -34,12 +34,12 @@ def resize_image_to_hd(image_path):
         # Resize the image
         resized_img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
         
-        # Save with high quality (90) and preserve EXIF data if available
+        # Save with good quality (80) and preserve EXIF data if available
         exif_data = img.info.get('exif')
         if exif_data:
-            resized_img.save(image_path, quality=90, optimize=True, exif=exif_data)
+            resized_img.save(image_path, quality=80, optimize=True, exif=exif_data)
         else:
-            resized_img.save(image_path, quality=90, optimize=True)
+            resized_img.save(image_path, quality=80, optimize=True)
         
         img.close()
         resized_img.close()
