@@ -1,14 +1,18 @@
 # valentines-day
 
-A romantic Valentine's Day website featuring a dynamic photo gallery with floating violet animations.
+A romantic Valentine's Day website featuring a dynamic photo gallery with floating violet animations, countdown timer, love letter, and personalized romantic content.
 
 ## Features
 
 - 💜 Beautiful purple and red color scheme
 - 🌸 Floating violet cartoon animations
+- ⏱️ Live countdown timer to Valentine's Day 2026
+- 💌 Personalized love letter section
+- 💝 "Reasons I Love You" cards with beautiful animations
+- 🎨 Interactive heart animations on click
 - 📸 Three-column photo gallery with smooth animations
 - ✨ Hover effects that blur photos and reveal location/date
-- 📱 Responsive design for all devices
+- 📱 Fully responsive design for all devices
 
 ## How to Update Photos
 
@@ -49,6 +53,33 @@ Edit `photos.json` to add or modify photo metadata:
 - **Column 3**: Moves up
 
 Distribute your photos across columns for a balanced look.
+
+## Personalization Features
+
+### Countdown Timer
+The website includes a live countdown to Valentine's Day 2026, displaying days, hours, minutes, and seconds. The timer updates in real-time and creates anticipation for the special day.
+
+### Love Letter
+A beautifully styled personal message section where you can express your feelings. Edit the text in `index.html` under the `.love-letter-section` to customize your message.
+
+### Reasons I Love You
+Six interactive cards showcasing reasons for your love. Each card features:
+- An emoji representing the reason
+- A heartfelt message
+- Smooth hover animations with elevation and glow effects
+
+Customize these in `index.html` by editing the `.reason-card` elements.
+
+### Interactive Hearts
+Click anywhere on the page to create floating purple hearts that animate upward and fade away. This adds a playful, romantic interaction to the website.
+
+## Customization
+
+### Personalizing the Content
+1. **Update the Love Letter**: Edit the message in `index.html` under the `.love-letter` class
+2. **Customize Reasons**: Modify the reason cards in the `.reasons-grid` section
+3. **Change Names**: Update "Léon + Lalie" in the header to your names
+4. **Adjust Countdown Date**: Change the target date in `script.js` (search for "Valentine's Day 2026")
 
 ## Color Palette
 
